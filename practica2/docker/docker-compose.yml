@@ -23,3 +23,11 @@ services:
             - 8080:8080
         depends_on: 
             - db
+
+    apiv2:
+        build: 
+            context: ../
+            dockerfile: docker/Dockerfiles/apiv2/Dockerfile
+        container_name: 'apiv2'
+        ports:
+            - 8081:8080
