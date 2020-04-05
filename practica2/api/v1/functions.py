@@ -2,10 +2,8 @@
 import pmdarima as pm
 
 
-
-
 def prediction(df, hours, elements):
-    df = df.head(elements).fillna(0)
+    df = df.head(elements)
     # The model will be trained
     model = pm.auto_arima(df, start_p=1, start_q=1,
                         test='adf',       # use adftest to find optimal 'd'
