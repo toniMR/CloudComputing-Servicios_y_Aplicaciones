@@ -1,6 +1,5 @@
 pytest
 Flask
-gunicorn
 pymongo
 pandas
 pmdarima

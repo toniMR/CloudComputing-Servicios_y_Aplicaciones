@@ -14,6 +14,4 @@ RUN pip3 install -r requirements.txt
 
 USER nonrootuser
 
-
-# CMD gunicorn --bind 0.0.0.0:8080 apiv1:app
 CMD ["python3", "apiv1.py"]
