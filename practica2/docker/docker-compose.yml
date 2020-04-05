@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    db:
+        image: 'mongo:latest'
+        container_name: 'mongo'
+        ports:
+            - 27017:27017
+
+    apiv1:
+        build: 
+            context: ../
+            dockerfile: docker/Dockerfiles/apiv1/Dockerfile
+        container_name: 'apiv1'
+        # La dirección 127.0.0.1 apuntará a la máquina local
+        # (De esta forma apiv1.py se podrá conectar correctamente con el contenedor de mongo
+        # ya sea desde el contenedor apiv1 o ejecutando apiv1.py en local).
+        #
+        # Otra forma podría ser haciendo que la máquina local reconozca mongo como la red del contenedor mongo
+        # (Desde apiv1 si reconoce mongo como la red del contenedor de mongo, puesto que docker-compose lo hace automáticamente)
+        network_mode: host
+        ports:
+            - 8080:8080
+        depends_on: 
+            - db
