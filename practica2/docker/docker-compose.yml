@@ -31,3 +31,15 @@ services:
         container_name: 'apiv2'
         ports:
             - 8081:8080
+
+    nginx:
+        image: nginx:latest
+        container_name: 'nginx'
+        network_mode: host
+        depends_on: 
+            - apiv1
+            - apiv2
+        ports:
+            - 80:80
+        volumes:
+            - ~/binds/cc-p2/nginx/nginx.conf:/etc/nginx/nginx.conf
